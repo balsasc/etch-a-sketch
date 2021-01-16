@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    /* width: 500px; */
+    /* height: 500px; */
+    border: 5px solid #333;
+    display: grid;
+    grid-template-columns: repeat(16, 31.25px);
+    grid-template-rows: repeat(16, 31.25px);
+}
+
+.grid-element{ 
+    width: 31.25px;
+    height: 31.25px;
+    border: 1px solid #333;
+    transition: all 0.4s ease;
+}
+
+.change-to-black {
+    background-color: #000;
+}
