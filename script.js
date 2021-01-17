@@ -64,7 +64,7 @@ const createGrid = () => {
 
         randomColorButton.addEventListener('click', () => {
             gridElement.addEventListener('mouseenter', () => {
-                let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`; // gives a random hex color;
+                // let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`; // gives a random hex color;
                 gridElement.style.background = `${randomColor}`;
             })
         })
