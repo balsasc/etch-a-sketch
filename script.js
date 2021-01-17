@@ -46,7 +46,7 @@ blackButton.innerText = 'Black Pen'
 
 const labelColor = document.createElement('label');
 labelColor.setAttribute('for', 'color');
-labelColor.innerText = 'Current color: '
+labelColor.innerText = 'Pick a color: '
 optionsContainer.append(labelSize, changeSize, blackButton, labelColor, colorPicker, randomColorButton, clearButton);
 
 
@@ -55,10 +55,18 @@ const createGrid = () => {
     let selectedValue = parseInt(changeSize.value);
     let index = 1;
     while (index <= selectedValue *  selectedValue) {
+        let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`; // gives a random hex color;
         const gridElement = document.createElement('div');
         gridElement.classList.add('grid-element');
         gridElement.addEventListener('mouseenter', () => {
-            gridElement.style.background = '#000';
+            gridElement.style.background = `${randomColor}`;
+        })
+
+        randomColorButton.addEventListener('click', () => {
+            gridElement.addEventListener('mouseenter', () => {
+                let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`; // gives a random hex color;
+                gridElement.style.background = `${randomColor}`;
+            })
         })
 
         blackButton.addEventListener('click', () => {
@@ -70,13 +78,6 @@ const createGrid = () => {
         colorPicker.addEventListener('change', () => {
             gridElement.addEventListener('mouseenter', () => {
                 gridElement.style.background = `${colorPicker.value}`;
-            })
-        })
-
-        randomColorButton.addEventListener('click', () => {
-            gridElement.addEventListener('mouseenter', () => {
-                let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`; // gives a random hex color;
-                gridElement.style.background = `${randomColor}`;
             })
         })
     
