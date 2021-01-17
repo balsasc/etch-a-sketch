@@ -29,12 +29,26 @@ changeSize.setAttribute('max', '64');
 
 const colorPicker = document.createElement('input');
 colorPicker.setAttribute('type', 'color');
-optionsContainer.append(changeSize, colorPicker, clearButton);
+colorPicker.setAttribute('id', 'color');
+
+const randomColorButton = document.createElement('button');
+randomColorButton.innerText = "Random Color";
+randomColorButton.classList.add('btn');
 
 const labelSize = document.createElement('label');
 labelSize.setAttribute('for', 'size');
 labelSize.innerText = 'Squares per side: '
-optionsContainer.prepend(labelSize);
+
+const blackButton = document.createElement('button');
+blackButton.classList.add('btn');
+blackButton.innerText = 'Black Pen'
+
+
+const labelColor = document.createElement('label');
+labelColor.setAttribute('for', 'color');
+labelColor.innerText = 'Current color: '
+optionsContainer.append(labelSize, changeSize, blackButton, labelColor, colorPicker, randomColorButton, clearButton);
+
 
 // Default grid size is going to be 16x16, but users can change it.
 const createGrid = () => {
@@ -43,10 +57,27 @@ const createGrid = () => {
     while (index <= selectedValue *  selectedValue) {
         const gridElement = document.createElement('div');
         gridElement.classList.add('grid-element');
-        gridElement.addEventListener('mouseenter', (e) => {
-            let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`; // gives a random hex color;
-            gridElement.style.background = `${colorPicker.value}`;
-            // gridElement.classList.add('change-to-black');
+        gridElement.addEventListener('mouseenter', () => {
+            gridElement.style.background = '#000';
+        })
+
+        blackButton.addEventListener('click', () => {
+            gridElement.addEventListener('mouseenter', () => {
+                gridElement.style.background = '#000';
+            })
+        })
+
+        colorPicker.addEventListener('change', () => {
+            gridElement.addEventListener('mouseenter', () => {
+                gridElement.style.background = `${colorPicker.value}`;
+            })
+        })
+
+        randomColorButton.addEventListener('click', () => {
+            gridElement.addEventListener('mouseenter', () => {
+                let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`; // gives a random hex color;
+                gridElement.style.background = `${randomColor}`;
+            })
         })
     
         clearButton.addEventListener('click', () => {
@@ -66,54 +97,4 @@ createGrid();
 changeSize.addEventListener('change', () => {
     fullClearGrid();
     createGrid();
-    // selectedValue = parseInt(changeSize.value);
-    // let index = 1;
-    // while (index <= selectedValue *  selectedValue) {
-    //     const gridElement = document.createElement('div');
-    //     gridElement.classList.add('grid-element');
-    //     gridElement.addEventListener('mouseover', () => {
-    //         gridElement.classList.add('change-to-black');
-    //     })
-    
-    //     clearButton.addEventListener('click', () => {
-    //         gridElement.classList.remove('change-to-black');
-    //     });
-    
-    //     container.append(gridElement);
-    //     index++;
-    // }
-    
-    // container.style.gridTemplateColumns = `repeat(${(selectedValue)}, ${containerSize / (selectedValue)}px)`;
-    // container.style.gridTemplateRows = `repeat(${(selectedValue)}, ${containerSize / (selectedValue)}px)`;
 })
-
-
-
-
-
-
-
-// const selectedValue = parseInt(changeSize.value); // for now
-
-// let index = 1;
-//     while (index <= selectedValue *  selectedValue) {
-//     const gridElement = document.createElement('div');
-//     gridElement.classList.add('grid-element');
-//     gridElement.addEventListener('mouseover', () => {
-//         gridElement.classList.add('change-to-black');
-//     })
-
-//     clearButton.addEventListener('click', () => {
-//         gridElement.classList.remove('change-to-black');
-//     });
-
-//     container.append(gridElement);
-//     index++;
-// }
-
-// container.style.gridTemplateColumns = `repeat(${(selectedValue)}, ${containerSize / (selectedValue)}px)`;
-// container.style.gridTemplateRows = `repeat(${(selectedValue)}, ${containerSize / (selectedValue)}px)`;
-
-
-
-

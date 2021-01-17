@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+html {
+    font-size: 100%;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
@@ -42,8 +46,8 @@ h1 {
 .container {
     border: 5px solid #333;
     display: grid;
-    width: 640px;
-    height: 640px;
+    width: 40rem; /* 640px */
+    height: 40rem;
     /* grid-template-columns: repeat(16, 40px); 
     grid-template-rows: repeat(16, 40px); */
 }
@@ -73,4 +77,36 @@ input {
     font-size: 1.1rem;
 }
 
+.btn:hover {
+    background-color: #333;
+    color: #fff; 
+}
 
+@media (max-width: 1000px) {
+    html {
+        font-size: 50%;
+    }
+
+    body {
+        padding: 2rem;
+        overflow: hidden;
+    }
+
+    h1 {
+        position: relative;
+        padding-bottom: 8rem;
+    }
+
+    .main {
+        align-items: center;
+        height: 50%;
+        /* padding-top: 3rem; */
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+    .options-container > * {
+        margin-right: 0.5rem;
+    }
+}
