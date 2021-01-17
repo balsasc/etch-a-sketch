@@ -1,0 +1,1 @@
+Etch-a-Sketch project made using CSS Grid and JavaScript.
