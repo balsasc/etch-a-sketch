@@ -1,0 +1,1 @@
+Etch-a-Sketch project built using HTML, CSS and JavaScript
