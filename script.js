@@ -19,10 +19,63 @@ const createGrid = (h, w) => {
     gridItem.classList.add("grid-item");
     gridItem.style.height = `${gridSize / h}px`;
     gridItem.style.width = `${gridSize / w}px`;
-    gridItem.style.border = `1px solid #555`;
+    gridItem.style.border = `1px solid #666`;
     gridContainer.append(gridItem);
   }
   gridContainer.style.gridTemplateColumns = `repeat(${parseInt(size.value)}, ${gridSize / h}px)`
+
+  const allGridItems = document.querySelectorAll(".grid-item");
+
+  clearButton.addEventListener('click', () => {
+    allGridItems.forEach(item => {
+      item.classList.add('white');
+    })
+  })
+  
+  blackPen.addEventListener('click', () => {
+    allGridItems.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        item.classList.add('dark');
+        if (item.classList.contains('white')) {
+          item.classList.remove('white');
+        }
+      })
+    })
+  })
+  
+  eraser.addEventListener('click', () => {
+    allGridItems.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        item.classList.add('white');
+        if (item.classList.contains('dark')) {
+          item.classList.remove('dark');
+        }
+      })
+    })
+  })
+  
+  randomColor.addEventListener('click', () => {
+    allGridItems.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        item.style.backgroundColor = randomColor;
+          item.classList.remove('dark');
+          item.classList.remove('white');
+      })
+    })
+  })
+
+  selectedColor.addEventListener('change', () => {
+    let customColor = selectedColor.value;
+    allGridItems.forEach(item => {
+      item.addEventListener('mouseover', () => {
+        item.style.backgroundColor = customColor;
+        item.classList.remove('dark');
+        item.classList.remove('white');
+      })
+    })
+  })
+
 }
 
 createGrid(height, width);
@@ -32,43 +85,3 @@ size.addEventListener('change', () => {
   createGrid(parseInt(size.value), parseInt(size.value));
 })
 
-const allGridItems = document.querySelectorAll(".grid-item");
-
-clearButton.addEventListener('click', () => {
-  allGridItems.forEach(item => {
-    item.classList.add('white');
-  })
-})
-
-blackPen.addEventListener('click', () => {
-  allGridItems.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      item.classList.add('dark');
-      if (item.classList.contains('white')) {
-        item.classList.remove('white');
-      }
-    })
-  })
-})
-
-eraser.addEventListener('click', () => {
-  allGridItems.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      item.classList.add('white');
-      if (item.classList.contains('dark')) {
-        item.classList.remove('dark');
-      }
-    })
-  })
-})
-
-randomColor.addEventListener('click', () => {
-  allGridItems.forEach(item => {
-    item.addEventListener('mouseover', () => {
-      let randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-      item.style.backgroundColor = randomColor;
-        item.classList.remove('dark');
-        item.classList.remove('white');
-    })
-  })
-})
