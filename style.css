@@ -1,15 +1,27 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1 { font-size: 3rem; }
+h1 { 
+  font-size: 3rem;
+  margin-bottom: 5rem;
+}
 
 label { 
   font-size: 1.5rem;
   text-transform: uppercase;
 }
 
-input { padding:0.6rem 1.4rem; max-width: 70px; font-size: 1.5rem;}
+.size {
+  padding: 0.4rem 1.6rem;
+  font-size: 1.5rem;
+}
 
 .text-center { text-align: center; }
 
@@ -22,6 +34,7 @@ input { padding:0.6rem 1.4rem; max-width: 70px; font-size: 1.5rem;}
 .container {
   display: flex;
   justify-content: center;
+  max-width: 100%;
 }
 
 .button-wrapper {
@@ -31,17 +44,9 @@ input { padding:0.6rem 1.4rem; max-width: 70px; font-size: 1.5rem;}
   margin-right: 3rem;
 }
 
-.button-wrapper > * {
-  margin-bottom: 2rem;
-}
-
-.grid-item {
-  border: 1px solid black;
-}
+.button-wrapper > * { margin-bottom: 2rem; }
 
 .grid-wrapper {
-  border: 1px solid #333;
-  width: 650px;
   display: grid;
-  /* grid-template-columns: repeat(18, 35.55555556px); */
+  border: 1px solid #333;
 }
